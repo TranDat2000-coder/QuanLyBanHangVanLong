@@ -1,0 +1,44 @@
+.content-admin-put table{
+	width: 95%;
+
+}
+
+.content-admin-put table tr th{
+	border:  1px solid black;
+	text-align: center;
+}
+.content-admin-put table tr td{
+	border:  1px solid black;
+}
+
+.content-admin-put .thao-tac{
+	width: 100px;
+}
+
+.content-admin-put .them input{
+	height: 30px;
+}
+
+.form-them-new .title-them{
+	width: 400px;
+	margin-left: 40px;
+}
+
+.form-them-new .picture-them{
+	margin-left: 7px;
+}
+.form-them-new .short-them{
+	margin-left: 13px;
+}
+
+.form-them-new .content-them{
+	margin-left: 28px;
+}
+
+.form-them-new .them-btn{
+	margin-left: 100px;
+}
+
+.them a{
+	width: 20px;
+}

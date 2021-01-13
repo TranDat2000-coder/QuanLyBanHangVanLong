@@ -1,0 +1,134 @@
+/* Header of the page */
+
+.carouselExampleIndicators{
+	   width: 700px;
+}
+
+.carousel-inner .carousel-item img{
+	width: 800px;
+	height: 300px;
+}
+
+.my-cart{
+	position: relative;
+}
+
+.my-cart .cart-number{
+	position: absolute;
+	top: -10px;
+	left: 10px;
+	width: 30px;
+	height: 25px;
+	text-align: center;
+}
+
+
+.form-inline .form-control{
+  height: 36px;
+}
+
+/* footer of the page */
+.footer .row{
+  background-color: #909090;
+  font-family: sans-serif
+}
+
+.footer .header-footer{
+  border-bottom: 1px solid white;
+}
+
+.footer .title-footer{
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+}
+
+.footer .menu ul{
+  padding:  0;
+  list-style-type: none;
+}
+
+.footer .menu ul li{
+  height: 30px;
+}
+
+.footer .menu ul li a{
+  font-size: 12px;
+  text-decoration: none;
+  color: white
+}
+
+.footer .menu ul li:hover{
+  margin-left: 5px;
+}
+
+.menu1 ul li:hover{
+  margin-right: 5px;
+}
+
+.menu-icon ul{
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu-icon ul li{
+  display: inline;
+  margin-right: 20px;
+}
+
+.menu-icon ul li a{
+  color: white;
+  font-size: 25px;
+}
+
+.menu-icon ul li a:hover{
+  color: gray;
+
+}
+
+
+/* News of the page */
+.picture-news img{
+  width: 390px;
+  height: 240px;
+}
+
+/* product of the page */
+
+/* -----------------------------------màn hình mobie------------------------------------- */
+
+@media (max-width: 1200px){
+
+}
+
+@media (max-width: 992px){
+  /* header */
+  .text-hotline{
+    font-size: 12px;
+  }
+  .email{
+    font-size: 12px;
+  }
+
+  .text-location{
+    font-size: 12px;
+  }
+  .login{
+    font-size: 12px;
+  }
+
+  .registration{
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px){
+  /* header */
+  .text-hotline{
+    width: 100px;
+  }
+}
+
+@media (max-width: 576px){
+
+}

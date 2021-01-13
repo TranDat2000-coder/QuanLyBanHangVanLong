@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Tin tức-giải trí</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet" th:href="@{/theme/frontend/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/font-awesome.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/fontawesome/css/all.min.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/jquery.fancybox.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/swiper-bundle.min.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/style.css}">
+	<style type="">
+		body{
+            background-color: #e4e4f5;
+        }
+		.new-list a{
+			text-decoration: none;
+			color: black;
+		}
+	</style>
+</head>
+<body>
+
+<div th:insert="~{/page/headerpage :: header}"></div>
+
+<div class="news">
+	<div class="container">
+		<div class="row mt-3 mb-3 new-list"  th:each="news : ${newlist}">
+			<a th:href="@{/tin-tuc-one?id={id}(id = ${news.getId()})}" class="d-flex">
+				<div class="col-xl-4 picture-news p-0"> 
+					<img th:src="@{~/images/{thumb}(thumb = ${news.getThumbnail()})}">
+				</div>
+				<div class="col-xl-8">
+					<h1 class="title" th:text="${news.getTitle()}"></h1>
+					<p class="shortdescription" th:text ="${news.getShortDesciption()}"></p>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
+	
+<div th:insert="~{/page/footerpage :: footer}"></div>
+</body>
+<script th:src="@{/theme/frontend/js/jquery-3.4.1.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/bootstrap.min.js}" defer></script>
+<script th:src="@{theme/frontend/js/wow.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/valiForm.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/toastr.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/jquery.fancybox.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/swiper-bundle.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/script.js}" defer></script>
+<!-- <script th:src="@{/theme/frontend/js/new.year.min.js}"></script> -->
+<script type="text/javascript" src="https://dembuon.vn/lib/xmas.js"></script>
+</html>

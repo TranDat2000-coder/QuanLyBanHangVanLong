@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registration</title>
+        <link rel="stylesheet" th:href="@{/theme/frontend/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/theme/frontend/css/font-awesome.css}">
+        <link rel="stylesheet" th:href="@{/theme/frontend/css/fontawesome/css/all.min.css}">
+        <link rel="stylesheet" th:href="@{/theme/frontend/css/jquery.fancybox.css}">
+        <link rel="stylesheet" th:href="@{/theme/frontend/css/swiper-bundle.min.css}">
+        <link rel="stylesheet" th:href="@{/theme/frontend/css/style.css}">
+</head>
+<body>
+    
+    <br>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>Login page</h1>
+                <form th:action="@{/home-admin}" method="">
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">Invalid username or password.
+                        </div>
+                    </div>
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-info">You have been logged out.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>: <input type="text" id="username" name="username" class="form-control" autofocus="autofocus" placeholder="Username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>: <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-primary" value="Log In" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span>New user? <a href="/" th:href="@{/registration}">Register
+        here</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+<script th:src="@{/theme/frontend/js/jquery-3.4.1.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/bootstrap.min.js}" defer></script>
+<script th:src="@{theme/frontend/js/wow.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/valiForm.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/toastr.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/jquery.fancybox.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/swiper-bundle.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/align.js}" defer></script>
+
+</body>
+</html>

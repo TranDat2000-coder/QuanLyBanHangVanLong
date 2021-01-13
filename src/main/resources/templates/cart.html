@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Danh sách sản phẩm</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet" th:href="@{/theme/frontend/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/font-awesome.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/fontawesome/css/all.min.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/jquery.fancybox.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/swiper-bundle.min.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/style.css}">
+	<style>
+		.product{
+			width: 180px;
+			border: 1px solid #f1e8e8;
+			box-shadow: 2px 5px 5px #888888;
+			margin-top: 17px;
+    		margin-bottom: 17px;
+    		padding-top: 10px;
+		}
+		.product a{
+			text-decoration: none;
+		}
+		.product img{
+			width: 178px;
+			height: 180px;
+		}
+		.product-text{
+			padding: 10px 10px;
+		}
+		.product-text .name{
+			font-size: 14px;
+			color: black;
+		}
+		.product-text .sale-price{
+			font-size: 14px;
+			color: #bf081f;
+		}
+		.product-text .base-price{
+			font-size: 12px;
+			color: #222;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+
+<div th:insert="~{/page/headerpage :: header}"></div>
+
+	<h3>Cart</h3>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Pucture</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th>Sub Total</th>
+		</tr>
+		<tr th:each="item : ${session.cart}">
+			<td class="bg-warning" th:text="${item.getId()}"></td>
+			<td>
+				<img th:src="@{~/images/{thumb}(thumb = ${item.getThumbNail()})}">
+			</td>
+			<td th:text="${item.getSalePrice()}"></td>
+			<td th:text="${item.quantity}"></td>
+			<td th:text="${item.getSalePrice() * item.quantity}"></td>
+		</tr>
+	</table>
+	
+<div th:insert="~{/page/footerpage :: footer}"></div>
+</body>
+<script th:src="@{/theme/frontend/js/jquery-3.4.1.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/bootstrap.min.js}" defer></script>
+<script th:src="@{theme/frontend/js/wow.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/valiForm.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/toastr.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/jquery.fancybox.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/swiper-bundle.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/align.js}" defer></script>
+</html>

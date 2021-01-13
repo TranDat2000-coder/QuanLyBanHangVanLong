@@ -1,0 +1,35 @@
+@media (max-width: 1200px){
+
+}
+
+@media (max-width: 992px){
+  /* header */
+  .text-hotline{
+    font-size: 12px;
+  }
+  .email{
+    font-size: 12px;
+  }
+
+  .text-location{
+    font-size: 12px;
+  }
+  .login{
+    font-size: 12px;
+  }
+
+  .registration{
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px){
+  /* header */
+  .text-hotline{
+    width: 100px;
+  }
+}
+
+@media (max-width: 576px){
+
+}

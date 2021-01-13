@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${product.getName()}"></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet" th:href="@{/theme/frontend/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/font-awesome.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/fontawesome/css/all.min.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/jquery.fancybox.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/swiper-bundle.min.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/style.css}">
+	<style>
+		body{
+            background-color: #e4e4f5;
+        }
+		.product{
+			width: 250px;
+			border: 1px solid #f1e8e8;
+			box-shadow: 2px 5px 5px #888888;
+			margin-top: 17px;
+    		margin-bottom: 17px;
+		}
+		.product a{
+			text-decoration: none;
+		}
+		.product img{
+			width: 250px;
+			height: 150px;
+		}
+
+		.picture-product img{
+			width: 411px;
+		}
+		.picture-product{
+			padding-top: 10px;
+			padding-bottom: 10px;
+			border-radius: 17px;
+		}
+		.detial .name-product{
+			font-size: 24px;
+		}
+		.detial .sale-price{
+			font-size: 20px;
+			color: #bf081f;
+		}
+
+		.detial .base-price{
+			font-size: 14px;
+		}
+
+		.picture-product, .detial{
+			border-bottom: 1px solid #d6cece;
+			padding-bottom: 52px;
+		}
+		.text-quantity{
+			width: 50px;
+		}
+		.buy-product{
+			width: 201px;
+		    height: 49px;
+		    border-radius: 9px;
+		    background-color: tomato;
+		    color: white;
+		    font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+
+<div th:insert="~{/page/headerpage :: header}"></div>
+<form th:action="@{/product-one?id={id}&infoid={info}(id = ${param.id}, info = ${param.infoId})}" th:object="${product}">
+	<div class="container">
+		<div class="row mt-3">
+				<div class="col-xl-5">
+					<div class="picture-product bg-white d-flex justify-content-center">
+						<img th:src="@{~/images/{thumb}(thumb = ${product.getPicture()})}">
+					</div>
+				</div>
+				<div class="col-xl-7 detial">
+					<p class="name-product" th:text="${product.getName()}"></p>
+					<p>
+						<i class="sale-price" th:text="${product.getSalePrice()} + 'đ'"></i>
+						<strike>
+							<i class="base-price text-decoration-line-through" th:text="${product.getBasePrice()}+'đ'"></i>
+						</strike>
+					</p>
+					<div>
+						<h4>Khuyến mãi</h4>
+						<p>Giá và khuyến mãi dự kiến áp dụng đến 23:00 31/12</p>
+
+						<h3>Liên hệ đặt hàng: 0362337290</h3>
+						<p>Nhân viên tư vấn: Trần Quốc Đạt</p>
+						
+					</div>
+				</div>
+
+				<div class="col-xl-5 p-5" th:object="${info}">
+					<h2>Thông tin sản phẩm</h2>
+					 <p>
+					 	<span class="font-weight-bold">Chipset: </span>
+					 	<span th:text="${info.getChipSet()}"></span>
+					 </p>
+					 <p><span class="font-weight-bold">Company: </span>
+					 	<span th:text="${info.getCompany()}"></span>
+					 </p>
+					 <p>
+					 	<span class="font-weight-bold">Pinphone: </span>
+					 	<span th:text="${info.getPinPhone()} + 'mAh'"></span>
+					 </p>
+					 <p>
+					 	<span class="font-weight-bold">Ramphone: </span>
+					 	<span th:text="${info.getRamPhone()} + 'GB'"></span>
+					 </p>
+					 <p>
+					 	<span class="font-weight-bold">Romphone: </span>
+					 	<span th:text="${info.getRomPhone()} + 'GB'"></span>
+					 </p>
+					 <p>
+					 	<span class="font-weight-bold">Screensize: </span>
+					 	<span th:text="${info.getScreenSize()} + '**'"></span>
+					 </p>
+					 <p>
+					 	<span class="font-weight-bold">System version: </span>
+					 	<span th:text="${info.getSystemVersion()}"></span>
+					 </p>
+					 <p>
+					 	<span class="font-weight-bold">Weight: </span>
+					 	<span th:text="${info.getWeight()} + 'mm'"></span>
+					 </p>
+				</div>
+				<div class="col-xl-7 p-5">
+					<h2>Mô tả sản phẩm</h2>
+					<p th:text="${product.getDescription()}"></p>
+				</div>
+		</div>
+	</div>
+</form>
+	
+<div th:insert="~{/page/footerpage :: footer}"></div>
+</body>
+<script th:src="@{/theme/frontend/js/jquery-3.4.1.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/bootstrap.min.js}" defer></script>
+<script th:src="@{theme/frontend/js/wow.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/valiForm.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/toastr.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/jquery.fancybox.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/swiper-bundle.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/script.js}" defer></script>
+<!-- <script th:src="@{/theme/frontend/js/new.year.min.js}"></script> -->
+<script type="text/javascript" src="https://dembuon.vn/lib/xmas.js"></script>
+</html>

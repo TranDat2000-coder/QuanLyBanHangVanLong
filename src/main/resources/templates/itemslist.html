@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Danh sách sản phẩm</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet" th:href="@{/theme/frontend/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/font-awesome.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/fontawesome/css/all.min.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/jquery.fancybox.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/swiper-bundle.min.css}">
+	<link rel="stylesheet" th:href="@{/theme/frontend/css/style.css}">
+	<style>
+
+		body{
+            background-color: #e4e4f5;
+        }
+
+		.product{
+			width: 180px;
+			border: 1px solid #f1e8e8;
+			box-shadow: 2px 5px 5px #888888;
+			margin-top: 17px;
+    		margin-bottom: 17px;
+    		padding-top: 10px;
+		}
+		.product a{
+			text-decoration: none;
+		}
+		.product img{
+			width: 178px;
+			height: 180px;
+		}
+		.product-text{
+			padding: 10px 10px;
+		}
+		.product-text .name{
+			font-size: 14px;
+			color: black;
+		}
+		.product-text .sale-price{
+			font-size: 14px;
+			color: #bf081f;
+		}
+		.product-text .base-price{
+			font-size: 12px;
+			color: #222;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+
+<div th:insert="~{/page/headerpage :: header}"></div>
+
+	<div class="products p-0">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"> 
+
+					<div class="product-list flex-wrap d-flex">
+
+							<div class="product mr-2 bg-white" th:each="items : ${itemslist}">
+								<a th:href="@{/san-pham?id={id}&infoid={info}(id = ${items.getId()}, info = ${items.getInfoId()})}">
+									<img th:src="@{~/images/{thumb}(thumb = ${items.getThumbNail()})}">
+									<div class="product-text">
+										<p class="name" th:text="${items.getName()}"></p>
+										<p>
+											<i class="sale-price" th:text="${items.getSalePrice()} + 'đ'"></i>
+											<strike class="base-price"><i th:text="${items.getBasePrice()} + 'đ'"></i></strike>
+										</p>
+									</div>
+								</a>
+							</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<div th:insert="~{/page/footerpage :: footer}"></div>
+</body>
+<script th:src="@{/theme/frontend/js/jquery-3.4.1.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/bootstrap.min.js}" defer></script>
+<script th:src="@{theme/frontend/js/wow.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/valiForm.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/toastr.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/jquery.fancybox.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/swiper-bundle.min.js}" defer></script>
+<script th:src="@{/theme/frontend/js/align.js}" defer></script>
+<!-- <script th:src="@{/theme/frontend/js/new.year.min.js}"></script> -->
+<script type="text/javascript" src="https://dembuon.vn/lib/xmas.js"></script>
+</html>

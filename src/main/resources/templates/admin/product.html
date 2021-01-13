@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin-them-moi-san-pham</title>
+
+    <!-- Custom fonts for this template-->
+    <link th:href="@{/admin/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+    <link
+        th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link th:href="@{/admin/css/sb-admin-2.min.css}" rel="stylesheet">
+	<link th:href="@{/admin/css/styleadmin.css}" rel="stylesheet">
+    <style type="text/css">
+        .form-them-products .picture{
+            margin-left: 20px;
+        }
+
+        .form-them-products .name{
+            margin-left: 23px;
+        }
+
+        .form-them-products .baseprice{
+            margin-left: 79px;
+        }
+
+        .form-them-products .saleprice{
+            margin-left: 66px;
+        }
+
+        .form-them-products .description{
+            margin-left: 81px;
+        }
+
+        .form-them-products .them-btn{
+            margin-left: 130px;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/home-admin}">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Admin</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/trang-chu}"> <span>Trang Page</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" th:href="@{/admin/danhsach/tin-tuc}" data-toggle="collapse" 
+                data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <span>Quản lý tin tức</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" th:href="@{/admin/danhsach/products}" data-toggle="collapse" 
+                data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+
+                    <span>Quản lý sản phẩm</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" th:href="@{/admin/danhsach/productnew}" data-toggle="collapse" 
+                data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+
+                    <span>Quản lý sản phẩm mới 2021</span>
+                </a>
+            </li>
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <div th:insert="~{/admin/common/header :: headeradmin}"></div>
+                <!-- End of Topbar -->
+                
+                <!-- totalcontent -->
+                <div th:unless="${param.id}" class="form-them-products p-5">
+                    <form th:action="@{/admin/productnew}" th:method="POST" enctype="multipart/form-data" >
+                        <div th:object="${product}">
+                            Ảnh sản phẩm: <input type="file" path="file" name="file" class="picture mt-2" /> <br>
+                            Tên sản phẩm: <input type="text" class="name mt-2" name="name" th:field="*{name}"> <br>
+                            Giá cũ: <input type="text" class="baseprice mt-2" name="baseprice" th:field="*{basePrice}"><br>
+                            Giá sale: <input type="text" class="saleprice mt-2" name="saleprice" th:field="*{salePrice}"><br>
+                            Mô tả: <textarea class="description mt-2 short-them" name="" rows="4" cols="50" 
+                            th:field="*{description}">
+                            </textarea>
+                        </div>
+                            
+                        </textarea> <br>
+                         <div th:object="${infoproduct}">
+                             Chipset: <input type="text" name="chip" class="mt-2" th:field="*{chipSet}"> <br>
+                             Company: <input type="text" name="company" class="mt-2" th:field="*{company}"> <br>
+                             Pinphone: <input type="text" name="pin" class="mt-2" th:field="*{pinPhone}"> <br>
+                             Ramphone: <input type="text" name="ram" class="mt-2" th:field="*{ramPhone}"> <br>
+                             Romphone: <input type="text" name="rom" class="mt-2" th:field="*{romPhone}"> <br>
+                             Screensize: <input type="text" name="size" class="mt-2" th:field="*{screenSize}"> <br>
+                             Systemversion: <input type="text" name="system" class="mt-2" th:field="*{systemVersion}"> <br>
+                             Weight: <input type="text" name="weight" class="mt-2" th:field="*{weight}"> <br>
+                         </div>
+                        <button class="them-btn" type="submit"><i>Thêm</i></button>
+                    </form>
+                </div>
+
+                <div th:if="${param.id}" class="form-them-products p-5">
+                    <form th:action="@{/admin/productnew?id={id}&info={info}(id = ${param.id}, info = ${param.info})}" 
+                    method="POST">
+                        <!-- Ảnh sản phẩm: <input type="file" path="file" name="file" class="picture mt-2" /> <br> -->
+                        
+                        <div th:object="${product}">
+                            Tên sản phẩm: <input type="text" class="name mt-2" name="name" th:field="*{name}"> <br>
+                            Giá cũ: <input type="text" class="baseprice mt-2" name="baseprice" th:field="*{basePrice}"><br>
+                            Giá sale: <input type="text" class="saleprice mt-2" name="saleprice" th:field="*{salePrice}"><br>
+                            Mô tả: <textarea class="description mt-2 short-them" name="" rows="4" cols="50" 
+                            th:field="*{description}">
+                            </textarea> <br>
+                        </div>
+                        <div th:object="${infoproduct}">
+                             Chipset: <input type="text" name="chip" class="mt-2" th:field="*{chipSet}"> <br>
+                             Company: <input type="text" name="company" class="mt-2" th:field="*{company}"> <br>
+                             Pinphone: <input type="text" name="pin" class="mt-2" th:field="*{pinPhone}"> <br>
+                             Ramphone: <input type="text" name="ram" class="mt-2" th:field="*{ramPhone}"> <br>
+                             Romphone: <input type="text" name="rom" class="mt-2" th:field="*{romPhone}"> <br>
+                             Screensize: <input type="text" name="size" class="mt-2" th:field="*{screenSize}"> <br>
+                             Systemversion: <input type="text" name="system" class="mt-2" th:field="*{systemVersion}"> <br>
+                             Weight: <input type="text" name="weight" class="mt-2" th:field="*{weight}"> <br>
+                        </div>
+                        <button class="them-btn" type="submit"><i>Sửa</i></button>
+                    </form>
+                </div>
+                
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script th:src="@{vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script th:src="@{vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script th:src="@{js/sb-admin-2.min.js}"></script>
+
+    <!-- Page level plugins -->
+    <script th:src="@{vendor/chart.js/Chart.min.js}"></script>
+
+    <!-- Page level custom scripts -->
+    <script th:src="@{js/demo/chart-area-demo.js}"></script>
+    <script th:src="@{js/demo/chart-pie-demo.js}"></script>
+
+</body>
+
+</html>
